@@ -19,15 +19,17 @@ const EventModal = ({ event, type }) => {
   return (
     <div className="modal">
       <div className="modal__iconsContainer">
-        {type === 'View' && <div className="icon">
-          <EditIcon onClick={handleEdit} />
-        </div>}
+        {type === 'View' && (
+          <div className="icon">
+            <EditIcon onClick={handleEdit} />
+          </div>
+        )}
         <div className="icon">
           <CloseIcon onClick={handleClose} />
         </div>
       </div>
 
-      {type === 'View' ? <ViewModal event={event} /> :      <FormModal event={event} />}
+      {type === 'View' ? <ViewModal event={event} /> : <FormModal event={event} />}
     </div>
   )
 }
