@@ -1,0 +1,41 @@
+body,
+html,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nav {
+  &--top {
+    background: #363865;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 60px;
+    width: 100%;
+    z-index: 5;
+  }
+  &--side {
+    @extend .nav--top;
+
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    height: 100%;
+    width: 90px;
+  }
+
+  .body {
+    position: static;
+    padding: 60px 0 0 90px;
+  }
+}

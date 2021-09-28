@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Calender from './components/Calender'
+import EventModal from './components/Modals/Event'
+import Nav from './components/Nav'
+
+const date = new Date()
+const event = {
+  title: '2 Days event',
+  start: date.toDateString(),
+  end: date.toDateString(),
+  participants: ['ascasc@ascasc.co', 'cascascc@cascic.co'],
+  calendar: {
+    name: 'MyCalender',
+  },
+  description:
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit assumenda perferendis sunt sit molestiae iure atque, iste quibusdam voluptate minus.',
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Nav>
+        <Calender />
+        <EventModal event={event} />
+      </Nav>
+    </>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,99 @@
+.modal {
+  position: relative;
+  width: 543px;
+  height: 249px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+
+  padding: 15px;
+  &__iconsContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    width: 70px;
+    justify-content: space-around;
+    .icon {
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    .modal__head {
+      display: flex;
+      align-items: flex-end;
+      h2 {
+        margin: 0 20px 0 0;
+      }
+    }
+
+    .divider {
+      border-top: 1px solid #9eec61;
+    }
+    .events__dates {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .events__dates,
+    .events__participants,
+    .events__description {
+      margin: 10px 0;
+    }
+  }
+}
+
+.text {
+  font-family: Lato;
+  font-style: normal;
+  color: #000000;
+
+  &__primary {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  &__secondary {
+    font-weight: 300;
+    font-size: 18px;
+  }
+
+  &__list {
+    background: #f7ffc6;
+    border-radius: 2px;
+
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0 5px;
+  }
+}
+
+.modal__form {
+  input {
+    display: block;
+
+    width: 507px;
+    height: 42px;
+
+    margin: 5px 0;
+    padding: 0 5px;
+
+    border: 1.5px solid #dadada;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    font-size: 18px;
+  }
+
+  input:focus {
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    border: 1.5px solid #fff;
+    border-bottom: 2px solid red;
+  }
+}
