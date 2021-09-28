@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from '../Button/Button'
 
 const FormModal = ({ event }) => {
   const [formdata, setFormdata] = useState({
@@ -25,6 +26,7 @@ const FormModal = ({ event }) => {
     <form className="modal__form" onSubmit={handleSubmit}>
       <div className="modal__head">
         <h2>Create new event</h2>
+        <ColorPicker />
         <h3>{event.calendar.name}</h3>
       </div>
 
@@ -74,11 +76,46 @@ const FormModal = ({ event }) => {
           required
         />
 
-        <button type="button">Cancel</button>
-        <button type="submit">Create Event</button>
+        <Button type="button" size="default" variant="outlined">
+          Cancel
+        </Button>
+        <Button type="submit" size="medium" variant="primary">
+          Create Event
+        </Button>
       </div>
     </form>
   )
 }
 
 export default FormModal
+
+const ColorPicker = () => {
+  return (
+    <div className="colorbox">
+      <input type="radio" name="color" id="green" />
+      <label htmlFor="green">
+        <span class="green"></span>
+      </label>
+
+      <input type="radio" name="color" id="red" value="red" />
+      <label htmlFor="red">
+        <span class="red"></span>
+      </label>
+
+      <input type="radio" name="color" id="teal" />
+      <label htmlFor="teal">
+        <span class="teal"></span>
+      </label>
+
+      <input type="radio" name="color" id="blue" />
+      <label htmlFor="blue">
+        <span class="blue"></span>
+      </label>
+
+      <input type="radio" name="color" id="orange" />
+      <label htmlFor="orange">
+        <span class="orange"></span>
+      </label>
+    </div>
+  )
+}

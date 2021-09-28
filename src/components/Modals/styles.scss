@@ -1,7 +1,14 @@
+$colors: (
+  red: #db2828,
+  orange: #f2711c,
+  green: #21ba45,
+  teal: #00b5ad,
+  blue: #2185d0,
+);
+
 .modal {
   position: relative;
   width: 543px;
-  height: 249px;
 
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -95,5 +102,49 @@
     border-radius: 2px;
     border: 1.5px solid #fff;
     border-bottom: 2px solid red;
+  }
+}
+
+.colorbox {
+  input[type='radio'] {
+    display: none;
+    &:checked + label {
+      span {
+        transform: scale(1.25);
+      }
+      @each $name, $value in $colors {
+        .#{$name} {
+          border: 2px solid darken($value, 25%);
+        }
+      } // !@each
+    } // !&:checked + label
+  }
+
+  label {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+
+    cursor: pointer;
+    &:hover {
+      span {
+        transform: scale(1.25);
+        border: 2px solid #787878;
+      }
+    }
+    span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+
+      transition: transform 0.2s ease-in-out;
+      @each $name, $value in $colors {
+        &.#{$name} {
+          background: $value;
+        }
+      }
+    }
   }
 }

@@ -8,7 +8,7 @@ import './styles.scss'
 import FormModal from './FormModal'
 
 // View modal, Create/Edit modal
-const EventModal = ({ event }) => {
+const EventModal = ({ event, type }) => {
   const handleClose = () => {
     console.log('Handle close/edit')
   }
@@ -19,16 +19,15 @@ const EventModal = ({ event }) => {
   return (
     <div className="modal">
       <div className="modal__iconsContainer">
-        {/* <div className="icon">
+        {type === 'View' && <div className="icon">
           <EditIcon onClick={handleEdit} />
-        </div> */}
+        </div>}
         <div className="icon">
           <CloseIcon onClick={handleClose} />
         </div>
       </div>
 
-      <FormModal event={event} />
-      {/* <ViewModal event={event} /> */}
+      {type === 'View' ? <ViewModal event={event} /> :      <FormModal event={event} />}
     </div>
   )
 }

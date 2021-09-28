@@ -1,0 +1,59 @@
+.btn {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 2px;
+  position: relative;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 2;
+  height: 42px;
+  transition: all 200ms linear;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  border: none;
+  cursor: pointer;
+  outline: 0;
+  text-transform: capitalize;
+  color: white;
+
+  &:hover {
+    // background-color: #334452;
+    border: 2px solid rebeccapurple;
+  }
+
+  &--primary {
+    background-color: rgba(54, 56, 101, 1);
+  }
+  &--secondary {
+    background-color: rgba(31, 184, 110, 1);
+  }
+  &--outlined {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(54, 56, 101, 1);
+    color: black;
+  }
+  &--danger {
+    background-color: rgba(184, 31, 31, 1);
+  }
+  &--disabled {
+    cursor: not-allowed;
+    background-color: rgba(146, 146, 146, 1);
+  }
+
+  &--large {
+    width: 320px;
+  }
+  &--medium {
+    width: 270px;
+  }
+  &--default {
+    width: 180px;
+  }
+  &--small {
+    width: 120px;
+  }
+}
