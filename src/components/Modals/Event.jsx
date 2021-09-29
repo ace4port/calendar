@@ -8,29 +8,28 @@ import './styles.scss'
 import FormModal from './FormModal'
 
 // View modal, Create/Edit modal
-const EventModal = ({ event, type }) => {
-  const handleClose = () => {
-    console.log('Handle close/edit')
-  }
+const EventModal = ({ event, type, handleClose, addEvent }) => {
+  // const handleClose = () => {  }
+
   const handleEdit = () => {
     console.log('Handle close/edit')
   }
 
   return (
-    <div className="modal">
-      <div className="modal__iconsContainer">
-        {type === 'View' && (
-          <div className="icon">
-            <EditIcon onClick={handleEdit} />
+        <div className={`modal`}>
+          <div className="modal__iconsContainer">
+            {type === 'view' && (
+              <div className="icon">
+                <EditIcon onClick={handleEdit} />
+              </div>
+            )}
+            <div className="icon" onClick={handleClose}>
+              <CloseIcon />
+            </div>
           </div>
-        )}
-        <div className="icon">
-          <CloseIcon onClick={handleClose} />
-        </div>
-      </div>
 
-      {type === 'View' ? <ViewModal event={event} /> : <FormModal event={event} />}
-    </div>
+          {type === 'view' ? <ViewModal event={event} /> : <FormModal event={event} addEvent={addEvent} />}
+        </div>
   )
 }
 

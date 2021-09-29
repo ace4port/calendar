@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 
-const FormModal = ({ event }) => {
+const FormModal = ({ event, addEvent }) => {
   const [formdata, setFormdata] = useState({
     title: '',
     calendar: '',
     color: '',
-    start: '',
-    end: '',
+    start: event.start,
+    end: event.end,
     participants: '',
     description: '',
   })
@@ -20,6 +20,7 @@ const FormModal = ({ event }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Form submitted with data', JSON.stringify(formdata))
+    addEvent(formdata)
   }
 
   return (
@@ -27,7 +28,7 @@ const FormModal = ({ event }) => {
       <div className="modal__head">
         <h2>Create new event</h2>
         <ColorPicker />
-        <h3>{event.calendar.name}</h3>
+        {/* <h3>{event.calendar.name}</h3> */}
       </div>
 
       <div className="modal__body">

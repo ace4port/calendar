@@ -21,11 +21,6 @@ function App() {
     <>
       <Nav>
         <Calender />
-        <div style={{ display: 'flex' }}>
-          <EventModal event={event} type="Create" />
-          <EventModal event={event} type="Edit" />
-          <EventModal event={event} type="View" />
-        </div>
       </Nav>
     </>
   )

@@ -10,6 +10,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss'
 // import moment from 'moment'
 import './styles.scss'
+import EventModal from '../Modals/Event'
 
 const DragCalendar = withDragAndDrop(Calendar)
 
@@ -28,6 +29,9 @@ const eventList = [
     title: 'B-Day',
     start: new Date(),
     end: new Date(),
+    calendar: {
+      name: 'myCalender123',
+    },
     allDay: false,
   },
   {
@@ -54,11 +58,12 @@ const eventList = [
 const Calender = () => {
   const [events, setEvents] = useState(eventList)
 
+  const [modal, setModal] = useState({ type: 'view', show: false, event: eventList[0] })
+
   const [draggedEvent, setDraggedEvent] = useState()
   const [displayDragItemInCell, setDisplayDragItemInCell] = useState(true)
 
-  const addEvent = ({ start, end }) => {
-    const title = window.prompt('New event name')
+  const addEvent = ({ title, start, end }) => {
     if (title) {
       setEvents([...events, { title: title, start, end }])
     }
@@ -89,29 +94,26 @@ const Calender = () => {
     console.log(`${event.title} was resized to ${start}-${end}`)
   }
 
-  const handleDragStart = e => {
+  const handleDragStart = (e) => {
     setDraggedEvent(e)
   }
 
   const dragFromOutsideItem = () => draggedEvent
-  const onDropFromOutside = ({start, end, allDay}) => {
+  const onDropFromOutside = ({ start, end, allDay }) => {
     const event = {
       id: draggedEvent.id,
       title: draggedEvent.title,
       start,
       end,
-      allDay: allDay
+      allDay: allDay,
     }
     setDraggedEvent(null)
-    moveEvent({event, start, end })
+    moveEvent({ event, start, end })
   }
-
-
 
   return (
     <div className="calender">
       <DragCalendar
-        // defaults needed
         selectable
         localizer={localizer}
         events={events}
@@ -121,8 +123,8 @@ const Calender = () => {
         startAccessor="start"
         endAccessor="end"
         // Add event, view event
-        onSelectSlot={addEvent}
-        onSelectEvent={(e) => console.log(e)}
+        onSelectSlot={(e) => setModal({ ...modal, type: 'add', show: true, event: e })}
+        onSelectEvent={(e) => setModal({ ...modal, type: 'view', show: true, event: e })}
         // costom time stamps
         step={15}
         timeslots={8} // 1-15min --  2- half hour -- 4- 1hr
@@ -140,11 +142,24 @@ const Calender = () => {
         dragFromOutsideItem={displayDragItemInCell ? dragFromOutsideItem : null}
         onDropFromOutside={onDropFromOutside}
         handleDragStart={handleDragStart}
+        // titleAccessor={EventModal}
+        tooltipAccessor
 
         // selected={console.log}
         // rtl={true}
         // date={}
       />
+
+      <div className="modal__container" style={{ position: 'absolute' }}>
+        {modal.show && (
+          <EventModal
+            type={modal.type}
+            event={modal.event}
+            handleClose={() => setModal({ ...modal, show: false })}
+            addEvent={addEvent}
+          />
+        )}
+      </div>
     </div>
   )
 }

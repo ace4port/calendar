@@ -5,7 +5,7 @@ const ViewModal = ({event}) => {
         <div className="modal__body">
         <div className="modal__head">
           <h2>{event.title}</h2>
-          <h3>{event.calendar.name}</h3>
+          <h3>{event.calendar?.name}</h3>
         </div>
 
         <hr className="divider" />
@@ -14,11 +14,11 @@ const ViewModal = ({event}) => {
           <div className="events__dates">
             <p>
               <strong>From: </strong>
-              {event.start}
+              {event.start.toDateString()}
             </p>
             <p>
               <strong>To: </strong>
-              {event.end}
+              {event.end.toDateString()}
             </p>
           </div>
 
