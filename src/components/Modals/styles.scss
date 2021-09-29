@@ -6,19 +6,35 @@ $colors: (
   blue: #2185d0,
 );
 
+.modal-contain {
+  // display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
 .modal {
-  position: absolute;
+  // position: absolute;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
   width: 543px;
 
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 
-  padding: 15px;
   &__iconsContainer {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 17%;
+    right: 31%;
 
     display: flex;
     width: 70px;

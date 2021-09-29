@@ -3,7 +3,7 @@ import Button from '../Button/Button'
 
 import DatePicker from '../Datepicker'
 
-const FormModal = ({ event, addEvent }) => {
+const FormModal = ({ event, addEvent,handleClose }) => {
   const [formdata, setFormdata] = useState({
     title: '',
     calendar: '',
@@ -23,6 +23,7 @@ const FormModal = ({ event, addEvent }) => {
     e.preventDefault()
     console.log('Form submitted with data', JSON.stringify(formdata))
     addEvent(formdata)
+    handleClose()
   }
 
   return (
@@ -47,24 +48,19 @@ const FormModal = ({ event, addEvent }) => {
         <div className="events__dates">
         {/* <DatePicker /> */}
         <DatePicker 
-            // type="datetime-local"
             name="start"
-            placeholder="Event Start"
-            value={formdata.end}
-            onChange={handleChange}
+            label="Event Start"
+            value={formdata.start}
+            // onChange={handleStartDate}
             required
         />
-        <DatePicker />
-        
-          {/* <input
-            type="datetime-local"
+        <DatePicker 
             name="end"
-            placeholder="Event End"
+            label="Event End"
             value={formdata.end}
-            onChange={handleChange}
+            // onChange={handleStartDate}
             required
-          />
-        */}
+        />
         </div> 
 
         <input
@@ -84,7 +80,7 @@ const FormModal = ({ event, addEvent }) => {
           required
         />
 
-        <Button type="button" size="default" variant="outlined">
+        <Button type="button" size="default" variant="outlined" onClick={handleClose}>
           Cancel
         </Button>
         <Button type="submit" size="medium" variant="primary">

@@ -3,23 +3,22 @@ import TextField from '@mui/material/TextField'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import DateTimePicker from '@mui/lab/DateTimePicker'
-import Stack from '@mui/material/Stack'
 
-export default function DateTimeValidation({name, placeholder, value, onChange, ...props}) {
-  // const [value, setValue] = React.useState()
+export default function DateTimeValidation({value, label, ...props}) {
+  const [_value, setValue] = React.useState(value)
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DateTimePicker
-        renderInput={(params) => <TextField {...params} />}
-        label="Sart time 10am - 4:30pm"
-        value={value}
-        onChange={onChange}
-        minDate={new Date('2020-08-31')}
-        minTime={new Date(0, 0, 0, 10)}
-        maxTime={new Date(0, 0, 0, 16, 30)}
-        {...props}
-      />
+       <DateTimePicker
+          openTo="year"
+          views={['year', 'month', 'day', 'hours', 'minutes']}
+          label={label}
+          value={_value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(params) => <TextField {...params} helperText={null} />}
+        />
     </LocalizationProvider>
   )
 }
