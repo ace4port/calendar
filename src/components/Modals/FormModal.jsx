@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 
+import DatePicker from '../Datepicker'
+
 const FormModal = ({ event, addEvent }) => {
   const [formdata, setFormdata] = useState({
     title: '',
@@ -41,16 +43,20 @@ const FormModal = ({ event, addEvent }) => {
           required
         />
 
+
         <div className="events__dates">
-          <input
-            type="datetime-local"
+        {/* <DatePicker /> */}
+        <DatePicker 
+            // type="datetime-local"
             name="start"
             placeholder="Event Start"
-            value={formdata.start}
+            value={formdata.end}
             onChange={handleChange}
             required
-          />
-          <input
+        />
+        <DatePicker />
+        
+          {/* <input
             type="datetime-local"
             name="end"
             placeholder="Event End"
@@ -58,7 +64,8 @@ const FormModal = ({ event, addEvent }) => {
             onChange={handleChange}
             required
           />
-        </div>
+        */}
+        </div> 
 
         <input
           type="text"
